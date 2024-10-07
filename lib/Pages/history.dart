@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class History extends StatefulWidget {
   const History({super.key});
@@ -18,7 +19,7 @@ class _HistoryState extends State<History> {
             Navigator.of(context).pushReplacementNamed('/homepage');
           },
         ),
-        title: const Text("History Diskusi PR"),
+        title: Text("History Diskusi PR",style: GoogleFonts.actor(fontSize: 16),),
         ),
     );
   }
