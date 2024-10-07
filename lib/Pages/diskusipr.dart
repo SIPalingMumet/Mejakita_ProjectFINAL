@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Component/ComponentPr.dart';
 
 class Diskusipr extends StatefulWidget {
   const Diskusipr({super.key});
@@ -22,7 +23,7 @@ class _DiskusiprState extends State<Diskusipr> {
         title: Text("Diskusi PR", style: GoogleFonts.actor(fontSize: 16),),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: 6),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -32,7 +33,7 @@ class _DiskusiprState extends State<Diskusipr> {
                     Navigator.of(context).pushReplacementNamed('/history');
                   },
                 ),
-                const SizedBox(width: 3),
+                const SizedBox(width: 1),
                 IconButton(
                   icon: const Icon(Icons.person, color: Colors.black),
                   onPressed: () {
@@ -45,9 +46,7 @@ class _DiskusiprState extends State<Diskusipr> {
           ),
         ]
       ),
-      body: const Column(
-        
-      ),
+      body: Widgetz(),
     );
   }
 }
