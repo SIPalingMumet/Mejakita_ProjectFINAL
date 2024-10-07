@@ -10,6 +10,16 @@ class History extends StatefulWidget {
 class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left),
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed('/homepage');
+          },
+        ),
+        title: const Text("History Diskusi PR"),
+        ),
+    );
   }
 }
