@@ -64,9 +64,9 @@ class _PertanyaanState extends State<Pertanyaan1> {
           children: [
             const SizedBox(height: 10),
             buildOptionItem(
-                '[English] Pengetahuan Umum', Icons.language, 'english'),
+                '[English] English UK', Icons.language, 'English'),
             buildOptionItem(
-                'Pengetahuan Kuantitatif', Icons.calculate, 'kuantitatif'),
+                'Pengetahuan Kuantitatif', Icons.calculate, 'Kuantitatif'),
           ],
         ),
       ),

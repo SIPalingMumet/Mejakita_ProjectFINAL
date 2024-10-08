@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Pertanyaan2 extends StatefulWidget {
   final String selectedSubject;
@@ -21,10 +22,11 @@ class _Pertanyaan2State extends State<Pertanyaan2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.purple,
         title: Text(
-          '[Materi] ${widget.selectedSubject}',
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ' ${widget.selectedSubject}',
+          style: GoogleFonts.actor(fontSize: 18, color: Colors.white),
         ),
       ),
       body: Container(
@@ -75,9 +77,10 @@ class _Pertanyaan2State extends State<Pertanyaan2> {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Data has been saved.'),
+                            content: Text('Data Telah Tersimpan'),
                           ),
                         );
+                        Navigator.of(context).pushReplacementNamed('/pertanyaan');
                       },
                     ),
                   ],

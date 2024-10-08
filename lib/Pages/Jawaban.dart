@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Component/ComponentJawaban.dart';
 
 class Jawaban extends StatefulWidget {
   const Jawaban({super.key});
@@ -21,6 +22,7 @@ class _JawabanState extends State<Jawaban> {
         ),
         title: Text("Diskusi PR",style: GoogleFonts.actor(fontSize: 16),),
         ),
+        body: const Louis(),
     );
   }
 }

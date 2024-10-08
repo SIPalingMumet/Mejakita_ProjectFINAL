@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Widgetz extends StatelessWidget {
+class Widgetz extends StatefulWidget {
   const Widgetz({super.key});
 
+  @override
+  State<Widgetz> createState() => _WidgetzState();
+}
+
+class _WidgetzState extends State<Widgetz> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -112,11 +117,14 @@ class Widgetz extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               color: const Color.fromARGB(255, 235, 235, 235),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  '  Filter berdasarkan :',
-                  style: GoogleFonts.actor(fontSize: 14),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '  Filter berdasarkan :',
+                    style: GoogleFonts.actor(fontSize: 14),
+                  ),
                 ),
               ),
             ),
