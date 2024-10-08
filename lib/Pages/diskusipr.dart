@@ -46,7 +46,7 @@ class _DiskusiprState extends State<Diskusipr> {
           ),
         ]
       ),
-      body: Widgetz(),
+      body: const Widgetz(),
     );
   }
 }
