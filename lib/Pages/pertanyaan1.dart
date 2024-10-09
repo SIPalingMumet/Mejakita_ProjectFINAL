@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Pages/Splash.dart';
 import 'pertanyaan2.dart';
 
 class Pertanyaan1 extends StatefulWidget {
@@ -45,7 +46,12 @@ class _PertanyaanState extends State<Pertanyaan1> {
                 const SizedBox(width: 16),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/homepage');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SplashScreen(),
+                      ),
+                    );
                   },
                   child: const Text(
                     'SIMPAN',
@@ -58,13 +64,12 @@ class _PertanyaanState extends State<Pertanyaan1> {
         ],
       ),
       body: Container(
-        color: Colors.white, 
+        color: Colors.white,
         child: ListView(
-          padding: const EdgeInsets.all(10), 
+          padding: const EdgeInsets.all(10),
           children: [
             const SizedBox(height: 10),
-            buildOptionItem(
-                '[English] English UK', Icons.language, 'English'),
+            buildOptionItem('[English] English UK', Icons.language, 'English'),
             buildOptionItem(
                 'Pengetahuan Kuantitatif', Icons.calculate, 'Kuantitatif'),
           ],
@@ -94,7 +99,9 @@ class _PertanyaanState extends State<Pertanyaan1> {
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.purple.withOpacity(0.1) : const Color.fromARGB(255, 251, 251, 251),
+          color: isSelected
+              ? Colors.purple.withOpacity(0.1)
+              : const Color.fromARGB(255, 251, 251, 251),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: isSelected ? Colors.purple : Colors.grey.shade300,

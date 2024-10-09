@@ -66,8 +66,8 @@ class _Pertanyaan2State extends State<Pertanyaan2> {
                           }
                         });
                       },
-                      activeColor: Colors.white,
-                      checkColor: Colors.purple,
+                      activeColor: Colors.purple,
+                      checkColor: Colors.blue,
                     ),
                     IconButton(
                       icon: const Icon(
