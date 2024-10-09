@@ -17,6 +17,7 @@ class _PertanyaanState extends State<Pertanyaan1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: const Text(
           "Pilih bidang yang kamu kuasai!",
@@ -46,12 +47,7 @@ class _PertanyaanState extends State<Pertanyaan1> {
                 const SizedBox(width: 16),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SplashScreen(),
-                      ),
-                    );
+                    const SplashScreen();
                   },
                   child: const Text(
                     'SIMPAN',
