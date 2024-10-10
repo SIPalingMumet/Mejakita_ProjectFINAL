@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Fungsi/FungsiPR.dart';
 
 class Widgetz extends StatefulWidget {
   const Widgetz({super.key});
@@ -9,6 +10,8 @@ class Widgetz extends StatefulWidget {
 }
 
 class _WidgetzState extends State<Widgetz> {
+  final Funtion funtion = Funtion();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +35,7 @@ class _WidgetzState extends State<Widgetz> {
                       Expanded(
                         child: TextButton(
                           onPressed: () {
-                            // funtion.tanyaSoal(context, setState);
+                            funtion.InputSoal(context);
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -74,7 +77,7 @@ class _WidgetzState extends State<Widgetz> {
                               size: 20,
                             ),
                             onPressed: () {
-                              // funtion.tanyaSoal(context, setState);
+                              funtion.InputSoal(context);
                             },
                           ),
                         ),
@@ -90,7 +93,7 @@ class _WidgetzState extends State<Widgetz> {
                       padding: const EdgeInsets.only(right: 30),
                       child: ElevatedButton(
                         onPressed: () {
-                          // funtion.tanyaSoal(context, setState);
+                          funtion.InputSoal(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
@@ -118,16 +121,35 @@ class _WidgetzState extends State<Widgetz> {
               width: MediaQuery.of(context).size.width,
               color: const Color.fromARGB(255, 235, 235, 235),
               child: Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '  Filter berdasarkan :',
-                    style: GoogleFonts.actor(fontSize: 14),
-                  ),
+                padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Filter berdasarkan:',
+                      style: GoogleFonts.actor(fontSize: 14),
+                    ),
+                    const SizedBox(height: 8.0),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          funtion.buildDropdownFilter(setState),
+                          const SizedBox(width: 8),
+                          funtion.buildFilterButton('Matematika', setState),
+                          const SizedBox(width: 8),
+                          funtion.buildFilterButton('Fisika', setState),
+                          const SizedBox(width: 8),
+                          funtion.buildFilterButton('Kimia', setState),
+                          const SizedBox(width: 8),
+                          funtion.buildFilterButton('Biologi', setState),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
