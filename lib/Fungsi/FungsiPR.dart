@@ -75,6 +75,15 @@ class Funtion {
     );
   }
 
+  void resetInput() {
+    selectedTingkat = 'Semua Tingkat';
+    selectedPendidikan = null;
+    selectedMapel = null;
+    selectedMateri = null;
+    soalList.clear();
+    activeFilter = 'Semua';
+  }
+
   Widget buildFilterButton(String filterName, Function setState) {
     bool isActive = activeFilter == filterName;
 
@@ -142,6 +151,7 @@ class Funtion {
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () {
+                      resetInput();
                       Navigator.pop(context);
                     },
                   ),
@@ -261,8 +271,8 @@ class Funtion {
                   children: [
                     Container(
                       decoration: const BoxDecoration(
-                        shape: BoxShape.circle, 
-                        color: Colors.green, 
+                        shape: BoxShape.circle,
+                        color: Colors.green,
                       ),
                       child: IconButton(
                         icon: const Icon(Icons.add, color: Colors.white),
@@ -284,7 +294,7 @@ class Funtion {
                                   ),
                                   child: Row(
                                     children: [
-                                     const Expanded(
+                                      const Expanded(
                                         child: TextField(
                                           decoration: InputDecoration(
                                             hintText:
@@ -300,8 +310,8 @@ class Funtion {
                                             color: Colors.grey),
                                         onPressed: () {
                                           setState(() {
-                                            soalList.removeAt(soalList.length -
-                                                1); 
+                                            soalList
+                                                .removeAt(soalList.length - 1);
                                           });
                                         },
                                       ),
@@ -318,10 +328,8 @@ class Funtion {
                             );
                           }
                         },
-                        padding: const EdgeInsets.all(
-                            0), 
-                        constraints:
-                            const BoxConstraints(), 
+                        padding: const EdgeInsets.all(0),
+                        constraints: const BoxConstraints(),
                         tooltip: 'Tambah Soal',
                       ),
                     ),
@@ -354,6 +362,96 @@ class Funtion {
     );
   }
 
-
+  Widget buildQuestionCard({
+  required String userName,
+  required String questionText,
+  String? imageUrl,
+  required int likes,
+  required int comments,
+  required VoidCallback onNavigate,
+}) {
+  return Card(
+    color: const Color(0xFFE5E7EB),
+    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    elevation: 3,
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              ClipOval(
+                child: Image.asset(
+                  'images/Ion1.png',
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                userName,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          if (imageUrl != null)
+            Container(
+              width: 100, // Lebar gambar
+              height: 150, // Tinggi gambar
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          const SizedBox(height: 10),
+          Text(
+            questionText,
+            style: const TextStyle(fontSize: 14),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.thumb_up, color: Colors.black),
+                    onPressed: () {},
+                  ),
+                  Text(likes.toString()),
+                  const SizedBox(width: 10),
+                  IconButton(
+                    icon: const Icon(Icons.thumb_down, color: Colors.grey),
+                    onPressed: () {},
+                  ),
+                  Text(comments.toString()),
+                  const SizedBox(width: 10),
+                  IconButton(
+                    icon: const Icon(Icons.maps_ugc_sharp, color: Colors.grey),
+                    onPressed: () {
+                      onNavigate();
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
+}
