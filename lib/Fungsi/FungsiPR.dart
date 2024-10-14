@@ -147,7 +147,7 @@ class Funtion {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Upload Pertanyaan"),
+                  const Text("Upload Soal"),
                   IconButton(
                     icon: const Icon(Icons.cancel_outlined,
                     color: Colors.white,),
@@ -372,7 +372,7 @@ class Funtion {
   required VoidCallback onNavigate,
 }) {
   return Card(
-    color: const Color(0xFFE5E7EB),
+    color: const Color(0xFFF3F4F6),
     margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),

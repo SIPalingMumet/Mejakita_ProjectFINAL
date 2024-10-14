@@ -13,8 +13,10 @@ class _DiskusiprState extends State<Diskusipr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
           title: Text(
           "Diskusi PR",
           style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),

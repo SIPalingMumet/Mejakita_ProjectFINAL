@@ -20,7 +20,7 @@ class fungis {
               children: [
                 const SizedBox(width: 10),
                 Text(
-                  "Upload Gambar",
+                  "Upload Jawaban ",
                   style: GoogleFonts.nunito(
                       color: Colors.white,
                       fontSize: 16,
@@ -45,7 +45,7 @@ class fungis {
                     Expanded(
                       child: Container(
                         height: 135,
-                        width: 220,
+                        width: 200,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),

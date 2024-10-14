@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:static_mejakita/Pages/Jawaban.dart';
 import 'package:static_mejakita/Pages/Profile.dart';
 import 'package:static_mejakita/Pages/diskusipr.dart';
-import 'package:static_mejakita/Pages/pertanyaan1.dart';
+import 'package:static_mejakita/MaybeUnUssed/pertanyaan1.dart';
 
 void main() {
   runApp(const MyApp());

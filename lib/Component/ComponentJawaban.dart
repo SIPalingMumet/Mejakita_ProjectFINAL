@@ -30,7 +30,7 @@ class _LouisState extends State<Louis> {
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -51,7 +51,7 @@ class _LouisState extends State<Louis> {
                     style: GoogleFonts.nunito(
                         fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey),
                   ),
-                  const SizedBox(width: 88),
+                  const SizedBox(width: 82),
                   const Icon(
                     Icons.send_outlined,
                     color: Colors.green,
