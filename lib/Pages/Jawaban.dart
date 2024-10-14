@@ -13,7 +13,9 @@ class _JawabanState extends State<Jawaban> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+      backgroundColor: Colors.white,
       leading: IconButton(
           icon: const Icon(Icons.chevron_left),
           onPressed: () {
