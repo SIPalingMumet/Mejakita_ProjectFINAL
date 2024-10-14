@@ -14,37 +14,44 @@ class _DiskusiprState extends State<Diskusipr> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      leading: IconButton(
-          icon: const Icon(Icons.chevron_left),
-          onPressed: () {
-            // Navigator.pop(context);
-          },
+        automaticallyImplyLeading: false,
+          title: Text(
+          "Diskusi PR",
+          style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),
         ),
-        title: Text("Diskusi PR", style: GoogleFonts.actor(fontSize: 16),),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 6),
+            padding: const EdgeInsets.only(right: 10),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                IconButton(
-                  icon: const Icon(Icons.history, color: Colors.black),
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Navigator.of(context).pushReplacementNamed('/history');
                   },
+                  child: Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.transparent,
+                        width: 2.0,
+                      ),
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'images/Ion1.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 1),
-                IconButton(
-                  icon: const Icon(Icons.person, color: Colors.black),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/pertanyaan');
-                  },
-                ),
-                const SizedBox(width: 8),
               ],
             ),
           ),
-        ]
+        ],
       ),
       body: const Widgetz(),
     );

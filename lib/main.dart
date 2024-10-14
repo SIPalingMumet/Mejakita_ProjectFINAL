@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:static_mejakita/Pages/Jawaban.dart';
+import 'package:static_mejakita/Pages/Profile.dart';
 import 'package:static_mejakita/Pages/diskusipr.dart';
-import 'package:static_mejakita/Pages/history.dart';
 import 'package:static_mejakita/Pages/pertanyaan1.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
       '/homepage': (context) => const Diskusipr(),
-      '/history': (context) => const History(),
+      '/history': (context) => const Profile(),
       '/jawaban': (context) => const Jawaban(),
       '/pertanyaan': (context) => const Pertanyaan1(),
     },

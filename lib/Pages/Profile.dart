@@ -20,10 +20,12 @@ class _ProfileState extends State<Profile> {
           },
         ),
         title: Text(
-          "History Diskusi PR",
+          "Profile",
           style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),
         ),
+         centerTitle: true,
       ),
+      body: const Column(),
     );
   }
 }

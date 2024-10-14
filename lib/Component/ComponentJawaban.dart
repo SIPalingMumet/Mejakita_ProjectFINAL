@@ -48,12 +48,10 @@ class _LouisState extends State<Louis> {
                   const SizedBox(width: 30),
                   Text(
                     'Kirim Jawaban anda Disini',
-                    style: GoogleFonts.actor(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
+                    style: GoogleFonts.nunito(
+                        fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey),
                   ),
-                  const SizedBox(width: 180),
+                  const SizedBox(width: 88),
                   const Icon(
                     Icons.send_outlined,
                     color: Colors.green,
