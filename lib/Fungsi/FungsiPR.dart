@@ -149,7 +149,8 @@ class Funtion {
                 children: [
                   const Text("Upload Pertanyaan"),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: const Icon(Icons.cancel_outlined,
+                    color: Colors.white,),
                     onPressed: () {
                       resetInput();
                       Navigator.pop(context);

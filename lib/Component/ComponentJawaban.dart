@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Fungsi/FungsiJawaban.dart';
 
 class Louis extends StatefulWidget {
   const Louis({super.key});
@@ -9,6 +10,8 @@ class Louis extends StatefulWidget {
 }
 
 class _LouisState extends State<Louis> {
+  final fungis myFungis = fungis();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,12 +22,12 @@ class _LouisState extends State<Louis> {
           children: [
             TextButton(
               onPressed: () {
-                // funtion.InputSoal(context);
+                myFungis.inputJawaban(context);
               },
               child: Container(
-                width: double.infinity,  
-                padding: const EdgeInsets.symmetric(
-                    vertical: 8, horizontal: 20),
+                width: double.infinity,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(14),
@@ -37,13 +40,25 @@ class _LouisState extends State<Louis> {
                     ),
                   ],
                 ),
-                child: Text(
-                  'Tuliskan Jawabanmu',
-                  style: GoogleFonts.actor(
-                    fontSize: 12, 
-                    color: Colors.grey,
+                child: Row(children: [
+                  const Icon(
+                    Icons.photo_camera,
+                    color: Colors.black,
                   ),
-                ),
+                  const SizedBox(width: 30),
+                  Text(
+                    'Kirim Jawaban anda Disini',
+                    style: GoogleFonts.actor(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(width: 180),
+                  const Icon(
+                    Icons.send_outlined,
+                    color: Colors.green,
+                  ),
+                ]),
               ),
             ),
           ],

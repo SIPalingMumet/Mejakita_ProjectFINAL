@@ -20,7 +20,8 @@ class _JawabanState extends State<Jawaban> {
             Navigator.of(context).pushReplacementNamed('/homepage');
           },
         ),
-        title: Text("Diskusi PR",style: GoogleFonts.actor(fontSize: 16),),
+        title: Text("Diskusi PR",
+        style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),),
         ),
         body: const Louis(),
     );
