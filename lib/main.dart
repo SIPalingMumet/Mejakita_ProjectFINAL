@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:static_mejakita/Pages/Jawaban.dart';
+import 'package:static_mejakita/Pages/Login.dart';
 import 'package:static_mejakita/Pages/Profile.dart';
+import 'package:static_mejakita/Pages/Signup.dart';
 import 'package:static_mejakita/Pages/diskusipr.dart';
 import 'package:static_mejakita/MaybeUnUssed/pertanyaan1.dart';
 
@@ -13,16 +15,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/homepage",
+      initialRoute: "/login",
       debugShowCheckedModeBanner: false,
       routes: {
-      '/homepage': (context) => const Diskusipr(),
-      '/history': (context) => const Profile(),
-      '/jawaban': (context) => const Jawaban(),
-      '/pertanyaan': (context) => const Pertanyaan1(),
-    },
-      
+        '/homepage': (context) => const Diskusipr(),
+        '/history': (context) => const Profile(),
+        '/jawaban': (context) => const Jawaban(),
+        '/pertanyaan': (context) => const Pertanyaan1(),
+        '/login': (context) => const Login(),
+        '/Signup': (context) => const Sign(),
+      },
     );
   }
 }
-

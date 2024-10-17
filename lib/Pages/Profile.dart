@@ -66,7 +66,9 @@ class _ProfileState extends State<Profile> {
                   ),
                   Center(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed('/login');
+                      },
                       child: Container(
                         width: 100,
                         padding: const EdgeInsets.symmetric(vertical: 10),

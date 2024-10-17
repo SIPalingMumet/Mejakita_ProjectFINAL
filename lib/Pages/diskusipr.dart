@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:static_mejakita/Component/ComponentPr.dart';
+import 'package:static_mejakita/Fungsi/filter.dart';
 
 class Diskusipr extends StatefulWidget {
   const Diskusipr({super.key});
@@ -10,6 +11,7 @@ class Diskusipr extends StatefulWidget {
 }
 
 class _DiskusiprState extends State<Diskusipr> {
+  late filter myfilter = filter();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +19,7 @@ class _DiskusiprState extends State<Diskusipr> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-          title: Text(
+        title: Text(
           "Diskusi PR",
           style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),
         ),
@@ -27,6 +29,14 @@ class _DiskusiprState extends State<Diskusipr> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
+                IconButton(
+                  onPressed: () {
+                    myfilter.Dialogfilter(context);
+                  },
+                  icon: const Icon(Icons.filter_alt_outlined),
+                  color: const Color(0xFF4d9d75),
+                ),
+                const SizedBox(width: 1),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushReplacementNamed('/history');
@@ -49,7 +59,6 @@ class _DiskusiprState extends State<Diskusipr> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 1),
               ],
             ),
           ),
