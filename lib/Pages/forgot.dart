@@ -17,7 +17,8 @@ class _ForgotState extends State<Forgot> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(children: [
-          Stack(children: [
+          Stack(
+            children: [
             Container(
               height: 420,
               decoration: const BoxDecoration(
