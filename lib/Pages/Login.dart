@@ -63,7 +63,10 @@ class _LoginState extends State<Login> {
                       buildTextField(Icons.lock_outline, "Password", true),
                       const SizedBox(height: 35),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                           Navigator.of(context)
+                              .pushReplacementNamed('/Forgot');
+                        },
                         child: const Text(
                           "Lupa Password",
                           style: TextStyle(

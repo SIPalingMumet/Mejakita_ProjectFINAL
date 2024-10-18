@@ -5,6 +5,7 @@ import 'package:static_mejakita/Pages/Profile.dart';
 import 'package:static_mejakita/Pages/Signup.dart';
 import 'package:static_mejakita/Pages/diskusipr.dart';
 import 'package:static_mejakita/MaybeUnUssed/pertanyaan1.dart';
+import 'package:static_mejakita/Pages/forgot.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +25,8 @@ class MyApp extends StatelessWidget {
         '/pertanyaan': (context) => const Pertanyaan1(),
         '/login': (context) => const Login(),
         '/Signup': (context) => const Sign(),
+        '/Forgot': (context) => const Forgot(),
+
       },
     );
   }
