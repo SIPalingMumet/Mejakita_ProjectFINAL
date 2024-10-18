@@ -406,8 +406,8 @@ class Funtion {
           const SizedBox(height: 10),
           if (imageUrl != null)
             Container(
-              width: 100, // Lebar gambar
-              height: 150, // Tinggi gambar
+              width: 100, 
+              height: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
