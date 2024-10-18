@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:static_mejakita/Pages/Jawaban.dart';
 import 'package:static_mejakita/Pages/Login.dart';
+import 'package:static_mejakita/Pages/Otp.dart';
 import 'package:static_mejakita/Pages/Profile.dart';
+import 'package:static_mejakita/Pages/ResetPassword.dart';
 import 'package:static_mejakita/Pages/Signup.dart';
 import 'package:static_mejakita/Pages/diskusipr.dart';
 import 'package:static_mejakita/MaybeUnUssed/pertanyaan1.dart';
@@ -26,7 +28,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/Signup': (context) => const Sign(),
         '/Forgot': (context) => const Forgot(),
-
+        '/Reset': (context) => const Reset(),
+        '/OTP': (context) => const Otp(),
       },
     );
   }
