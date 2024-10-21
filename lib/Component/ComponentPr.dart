@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Component/ComponentJawaban.dart';
 import 'package:static_mejakita/Fungsi/FungsiPR.dart';
 import 'package:static_mejakita/Pages/Jawaban.dart';
 
@@ -26,7 +27,7 @@ class _WidgetzState extends State<Widgetz> {
               children: [
                 TextButton(
                   onPressed: () {
-                    funtion.InputSoal(context);
+                    // funtion.InputSoal(context);
                   },
                   child: Container(
                     width: double.infinity,
@@ -114,9 +115,16 @@ class _WidgetzState extends State<Widgetz> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Jawaban(),
+                    builder: (context) => const Louis(
+                      questionText: "Hormon adalah pembawa pesan kimiawi...",
+                      userName: "Saya",
+                      imageUrl: null,
+                      likes: 20,
+                      comments: 0,
+                    ),
                   ),
                 );
+
               },
             ),
             const SizedBox(

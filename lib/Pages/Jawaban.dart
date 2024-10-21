@@ -25,7 +25,14 @@ class _JawabanState extends State<Jawaban> {
         title: Text("Diskusi PR",
         style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),),
         ),
-        body: const Louis(),
+        body: const Louis(
+  questionText: 'Your question text here',
+  userName: 'Your username here',
+  imageUrl: null,  
+  likes: null,     
+  comments: null,  
+),
+
     );
   }
 }

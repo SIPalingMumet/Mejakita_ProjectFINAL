@@ -3,7 +3,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:static_mejakita/Fungsi/FungsiJawaban.dart';
 
 class Louis extends StatefulWidget {
-  const Louis({super.key});
+  final String questionText;
+  final String userName;
+  final String? imageUrl;
+  final int? likes;
+  final int? comments;
+
+  const Louis({
+    super.key,
+    required this.questionText,
+    required this.userName,
+    this.imageUrl,
+    this.likes,
+   this.comments,
+  });
 
   @override
   State<Louis> createState() => _LouisState();
@@ -20,14 +33,52 @@ class _LouisState extends State<Louis> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    'images/Ion1.png',
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  widget.userName,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            if (widget.imageUrl != null)
+              Container(
+                width: 100,
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: NetworkImage(widget.imageUrl!),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            const SizedBox(height: 10),
+            Text(
+              widget.questionText,
+              style: const TextStyle(fontSize: 14),
+            ),
+            const SizedBox(height: 10),
             TextButton(
               onPressed: () {
                 myFungis.inputJawaban(context);
               },
               child: Container(
                 width: double.infinity,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),

@@ -65,10 +65,29 @@ class filter {
                                 selectedMapel = newValue;
                               });
                             },
-                            items: [' Matematika', ' Fisika', ' Kimia']
+                            items: [' Matematika ', ' Fisika  ', ' Kimia ']
                                 .map((mapel) => DropdownMenuItem<String>(
                                       value: mapel,
-                                      child: Text(mapel),
+                                      child: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                          horizontal: 5,
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 3,
+                                          horizontal: 3,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFF4d9d75),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Text(
+                                          mapel,
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
                                     ))
                                 .toList(),
                           ),
@@ -96,10 +115,29 @@ class filter {
                                 selectedMateri = null;
                               });
                             },
-                            items: [' SMP', ' SMA']
+                            items: [' SMP ', ' SMA ']
                                 .map((pendidikan) => DropdownMenuItem<String>(
                                       value: pendidikan,
-                                      child: Text(pendidikan),
+                                      child: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                          horizontal: 5,
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 3,
+                                          horizontal: 3,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFF4d9d75),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Text(
+                                          pendidikan,
+                                          style: GoogleFonts.nunito(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
                                     ))
                                 .toList(),
                           ),
@@ -130,7 +168,25 @@ class filter {
                       items: getMateriOptions(selectedMapel, selectedPendidikan)
                           .map((materi) => DropdownMenuItem<String>(
                                 value: materi,
-                                child: Text(materi),
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 5,
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 3,
+                                    horizontal: 3,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF4d9d75),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Text(
+                                    materi,
+                                    style: GoogleFonts.nunito(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
                               ))
                           .toList(),
                     ),
@@ -168,17 +224,17 @@ class filter {
       return [];
     }
 
-    if (mapel == ' Fisika' && pendidikan == ' SMP') {
+    if (mapel == ' Fisika ' && pendidikan == ' SMP ') {
       return [' Gerak', ' Gaya', ' Energi'];
-    } else if (mapel == ' Fisika' && pendidikan == ' SMA') {
+    } else if (mapel == ' Fisika  ' && pendidikan == ' SMA ') {
       return [' Kinematika', ' Dinamika', ' Hukum Newton'];
-    } else if (mapel == ' Matematika' && pendidikan == ' SMP') {
+    } else if (mapel == ' Matematika ' && pendidikan == ' SMP ') {
       return [' Aljabar', ' Geometri Dasar', ' Bilangan'];
-    } else if (mapel == ' Matematika' && pendidikan == ' SMA') {
+    } else if (mapel == ' Matematika ' && pendidikan == ' SMA ') {
       return [' Kalkulus', ' Trigonometri', '  Statistika'];
-    } else if (mapel == ' Kimia' && pendidikan == '  SMP') {
+    } else if (mapel == ' Kimia ' && pendidikan == '  SMP ') {
       return [' Zat dan Wujudnya', '  Perubahan Kimia', ' Asam dan Basa'];
-    } else if (mapel == 'Kimia' && pendidikan == 'SMA') {
+    } else if (mapel == ' Kimia ' && pendidikan == ' SMA ') {
       return [' Stoikiometri', '  Ikatan Kimia', '  Termokimia'];
     }
 
