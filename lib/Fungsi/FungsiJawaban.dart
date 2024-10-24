@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class fungis {
+
+  // Funsi Untuk Menampilkan Menginput Jawaban
   void inputJawaban(BuildContext context) {
     String? imagePath; 
     showDialog(
@@ -90,7 +92,7 @@ class fungis {
                         backgroundColor: Colors.green,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
-                        ),
+                        ),     
                       ),
                       icon: const Icon(Icons.edit_document, color: Colors.white),
                       label: Text(
@@ -148,4 +150,6 @@ class fungis {
       },
     );
   }
+
+  
 }

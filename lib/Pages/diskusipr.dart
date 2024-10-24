@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:static_mejakita/Component/ComponentPr.dart';
-import 'package:static_mejakita/Fungsi/filter.dart';
+import 'package:static_mejakita/Component/filter.dart';
 
 class Diskusipr extends StatefulWidget {
   const Diskusipr({super.key});

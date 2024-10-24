@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Funtion {
-  String activeFilter = 'Semua';
-  String selectedTingkat = 'Semua Tingkat';
-  List<Widget> soalList = [];
-  String? selectedMapel;
-  String? selectedPendidikan;
-  String? selectedMateri;
-
+  String activeFilter = 'Semua'; //  default value
+  String selectedTingkat = 'Semua Tingkat';  // default value
+  List<Widget> soalList = []; // Container Soal 
+  String? selectedMapel; // Filter For Mapel
+  String? selectedPendidikan; //  Filter For Pendidikan
+  String? selectedMateri; // If Else of Mapel x Pendidikan 
+  
+  // Dropdown Button For Pendidikan 
   Widget buildDropdownFilter(Function setState) {
     List<String> tingkatOptions = [
       'Semua Tingkat',
@@ -75,6 +76,7 @@ class Funtion {
     );
   }
 
+  // For Reset All Input Of Input Function
   void resetInput() {
     selectedTingkat = 'Semua Tingkat';
     selectedPendidikan = null;
@@ -84,6 +86,8 @@ class Funtion {
     activeFilter = 'Semua';
   }
 
+
+  // Outlined Filtered Button
   Widget buildFilterButton(String filterName, Function setState) {
     bool isActive = activeFilter == filterName;
 
@@ -113,7 +117,8 @@ class Funtion {
       ),
     );
   }
-
+  
+  // List Of Materi yang akan ditampilkan sesuai dengan isian mapel dan pendidikan 
   List<String> getMateriOptions(String? mapel, String? pendidikan) {
     if (mapel == null || pendidikan == null) {
       return [];
@@ -136,6 +141,7 @@ class Funtion {
     return [];
   }
 
+ // Fungsi Widget Untuk MengInputkan Soal dan  Filter 
   void InputSoal(BuildContext context) {
     showDialog(
       context: context,
@@ -363,6 +369,8 @@ class Funtion {
     );
   }
 
+
+  // Fungsi Untuk Menampilkan Widget Soal 
   Widget buildQuestionCard({
   required String userName,
   required String questionText,
