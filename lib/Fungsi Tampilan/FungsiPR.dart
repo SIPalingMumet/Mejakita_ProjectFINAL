@@ -3,13 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Funtion {
   String activeFilter = 'Semua'; //  default value
-  String selectedTingkat = 'Semua Tingkat';  // default value
-  List<Widget> soalList = []; // Container Soal 
+  String selectedTingkat = 'Semua Tingkat'; // default value
+  List<Widget> soalList = []; // Container Soal
   String? selectedMapel; // Filter For Mapel
   String? selectedPendidikan; //  Filter For Pendidikan
-  String? selectedMateri; // If Else of Mapel x Pendidikan 
-  
-  // Dropdown Button For Pendidikan 
+  String? selectedMateri; // If Else of Mapel x Pendidikan
+
+  // Dropdown Button For Pendidikan
   Widget buildDropdownFilter(Function setState) {
     List<String> tingkatOptions = [
       'Semua Tingkat',
@@ -86,7 +86,6 @@ class Funtion {
     activeFilter = 'Semua';
   }
 
-
   // Outlined Filtered Button
   Widget buildFilterButton(String filterName, Function setState) {
     bool isActive = activeFilter == filterName;
@@ -117,8 +116,8 @@ class Funtion {
       ),
     );
   }
-  
-  // List Of Materi yang akan ditampilkan sesuai dengan isian mapel dan pendidikan 
+
+  // List Of Materi yang akan ditampilkan sesuai dengan isian mapel dan pendidikan
   List<String> getMateriOptions(String? mapel, String? pendidikan) {
     if (mapel == null || pendidikan == null) {
       return [];
@@ -141,326 +140,348 @@ class Funtion {
     return [];
   }
 
- // Fungsi Widget Untuk MengInputkan Soal dan  Filter 
-  void InputSoal(BuildContext context) {
+  // Fungsi Widget Untuk MengInputkan Soal dan  Filter
+  void inputSoal(BuildContext context) {
+    String? imagePath;
     showDialog(
       context: context,
       builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return AlertDialog(
-              backgroundColor: Colors.white,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text("Upload Soal"),
-                  IconButton(
-                    icon: const Icon(Icons.cancel_outlined,
-                    color: Colors.white,),
-                    onPressed: () {
-                      resetInput();
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-              content: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: selectedMapel,
-                            hint: const Text(' Mapel',
-                                style: TextStyle(fontSize: 16)),
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 0.8),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(
-                                    color: Colors.blue, width: 2),
-                              ),
-                            ),
-                            onChanged: (newValue) {
-                              setState(() {
-                                selectedMapel = newValue;
-                              });
-                            },
-                            items: ['Matematika', 'Fisika', 'Kimia']
-                                .map((mapel) => DropdownMenuItem<String>(
-                                      value: mapel,
-                                      child: Text(mapel),
-                                    ))
-                                .toList(),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                            value: selectedPendidikan,
-                            hint: const Text(' Tingkat',
-                                style: TextStyle(fontSize: 16)),
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 1),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(
-                                    color: Colors.grey, width: 2),
-                              ),
-                            ),
-                            onChanged: (newValue) {
-                              setState(() {
-                                selectedPendidikan = newValue;
-                                selectedMateri = null;
-                              });
-                            },
-                            items: ['SMP', 'SMA']
-                                .map((pendidikan) => DropdownMenuItem<String>(
-                                      value: pendidikan,
-                                      child: Text(pendidikan),
-                                    ))
-                                .toList(),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    DropdownButtonFormField<String>(
-                      value: selectedMateri,
-                      hint:
-                          const Text(' Materi', style: TextStyle(fontSize: 16)),
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 1),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2),
-                        ),
-                      ),
-                      onChanged: (newValue) {
-                        setState(() {
-                          selectedMateri = newValue;
-                        });
-                      },
-                      items: getMateriOptions(selectedMapel, selectedPendidikan)
-                          .map((materi) => DropdownMenuItem<String>(
-                                value: materi,
-                                child: Text(materi),
-                              ))
-                          .toList(),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      padding: const EdgeInsets.all(8.0),
-                      child: const Text(
-                        "Soal yang anda tambahkan akan terupload secara terpisah. Maksimal upload adalah 3 soal.",
-                        style: TextStyle(color: Colors.blueGrey),
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    ...soalList,
-                    const SizedBox(height: 5),
-                  ],
+        return StatefulBuilder(builder: (context, setState) {
+          TextEditingController messageController = TextEditingController();
+
+          return AlertDialog(
+            backgroundColor: const Color(0xFF9CA3AF),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(width: 10),
+                Text(
+                  "Upload Jawaban ",
+                  style: GoogleFonts.nunito(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800),
                 ),
-              ),
-              actions: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.cancel_outlined,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.green,
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.add, color: Colors.white),
-                        onPressed: () {
-                          if (soalList.length < 3) {
-                            setState(() {
-                              soalList.add(
-                                Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: const BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: Colors.grey,
-                                        width: 2,
-                                      ),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Expanded(
-                                        child: TextField(
-                                          decoration: InputDecoration(
-                                            hintText:
-                                                'Tuliskan Soal Secara Detail atau Apa yang Membuat Kamu Bingung!',
-                                            border: InputBorder.none,
-                                          ),
-                                          maxLines: null,
-                                          keyboardType: TextInputType.multiline,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        icon: const Icon(Icons.close,
-                                            color: Colors.grey),
-                                        onPressed: () {
-                                          setState(() {
-                                            soalList
-                                                .removeAt(soalList.length - 1);
-                                          });
-                                        },
-                                      ),
-                                    ],
+                    Expanded(
+                      child: Container(
+                        height: 135,
+                        width: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 3,
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: imagePath == null
+                            ? Center(
+                                child: Text(
+                                  "No file has choice",
+                                  style: TextStyle(
+                                    color: Colors.grey[500],
+                                    fontSize: 14,
                                   ),
                                 ),
-                              );
-                            });
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Maksimal upload adalah 3 soal.'),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.network(
+                                  imagePath!,
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                ),
                               ),
-                            );
-                          }
-                        },
-                        padding: const EdgeInsets.all(0),
-                        constraints: const BoxConstraints(),
-                        tooltip: 'Tambah Soal',
                       ),
                     ),
-                    ElevatedButton(
+                    const SizedBox(width: 10),
+                    ElevatedButton.icon(
                       onPressed: () {
-                        Navigator.pop(context);
+                        setState(() {
+                          imagePath = 'https://picsum.photos/200/300';
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        elevation: 6,
                       ),
-                      child: Text(
-                        '  Upload  ',
-                        style: GoogleFonts.actor(
-                            fontSize: 12, color: Colors.white),
+                      icon:
+                          const Icon(Icons.edit_document, color: Colors.white),
+                      label: Text(
+                        "Pilih File",
+                        style: GoogleFonts.nunito(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white),
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: DropdownButtonFormField<String>(
+                        value: selectedMapel,
+                        hint: const Text(' Mapel',
+                            style: TextStyle(fontSize: 16)),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0.8),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
+                          ),
+                        ),
+                        onChanged: (newValue) {
+                          setState(() {
+                            selectedMapel = newValue;
+                          });
+                        },
+                        items: [' Matematika ', ' Fisika  ', ' Kimia ']
+                            .map((mapel) => DropdownMenuItem<String>(
+                                  value: mapel,
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 5,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 3,
+                                      horizontal: 3,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF4d9d75),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child: Text(
+                                      mapel,
+                                      style: GoogleFonts.nunito(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: DropdownButtonFormField<String>(
+                        value: selectedPendidikan,
+                        hint: const Text(' Tingkat',
+                            style: TextStyle(fontSize: 16)),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 1),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 2),
+                          ),
+                        ),
+                        onChanged: (newValue) {
+                          setState(() {
+                            selectedPendidikan = newValue;
+                            selectedMateri = null;
+                          });
+                        },
+                        items: [' SMP ', ' SMA ']
+                            .map((pendidikan) => DropdownMenuItem<String>(
+                                  value: pendidikan,
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 5,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 3,
+                                      horizontal: 3,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF4d9d75),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child: Text(
+                                      pendidikan,
+                                      style: GoogleFonts.nunito(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(24),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 3,
+                        blurRadius: 0,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: messageController,
+                          maxLines: null,
+                          style: const TextStyle(fontSize: 12),
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Kirim pertanyaan anda disini',
+                            hintStyle: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon:
+                            const Icon(Icons.send_outlined, color: Colors.grey),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ],
-            );
-          },
-        );
+            ),
+          );
+        });
       },
     );
   }
 
-
-  // Fungsi Untuk Menampilkan Widget Soal 
+  // Fungsi Untuk Menampilkan Widget Soal
   Widget buildQuestionCard({
-  required String userName,
-  required String questionText,
-  String? imageUrl,
-  required int likes,
-  required int comments,
-  required VoidCallback onNavigate,
-}) {
-  return Card(
-    color: const Color(0xFFF3F4F6),
-    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
-    ),
-    elevation: 3,
-    child: Padding(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              ClipOval(
-                child: Image.asset(
-                  'images/Ion1.png',
-                  width: 40,
-                  height: 40,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Text(
-                userName,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          if (imageUrl != null)
-            Container(
-              width: 100, 
-              height: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          const SizedBox(height: 10),
-          Text(
-            questionText,
-            style: const TextStyle(fontSize: 14),
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.thumb_up, color: Colors.black),
-                    onPressed: () {},
-                  ),
-                  Text(likes.toString()),
-                  const SizedBox(width: 10),
-                  IconButton(
-                    icon: const Icon(Icons.thumb_down, color: Colors.grey),
-                    onPressed: () {},
-                  ),
-                  Text(comments.toString()),
-                  const SizedBox(width: 10),
-                  IconButton(
-                    icon: const Icon(Icons.maps_ugc_sharp, color: Colors.grey),
-                    onPressed: () {
-                      onNavigate();
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+    required String userName,
+    required String questionText,
+    String? imageUrl,
+    required int likes,
+    required int comments,
+    required VoidCallback onNavigate,
+  }) {
+    return Card(
+      color: const Color(0xFFF3F4F6),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
       ),
-    ),
-  );
-}
-
+      elevation: 3,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    'images/Ion1.png',
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  userName,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            if (imageUrl != null)
+              Container(
+                width: 100,
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            const SizedBox(height: 10),
+            Text(
+              questionText,
+              style: const TextStyle(fontSize: 14),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.thumb_up, color: Colors.black),
+                      onPressed: () {},
+                    ),
+                    Text(likes.toString()),
+                    const SizedBox(width: 10),
+                    IconButton(
+                      icon: const Icon(Icons.thumb_down, color: Colors.grey),
+                      onPressed: () {},
+                    ),
+                    Text(comments.toString()),
+                    const SizedBox(width: 10),
+                    IconButton(
+                      icon:
+                          const Icon(Icons.maps_ugc_sharp, color: Colors.grey),
+                      onPressed: () {
+                        onNavigate();
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

@@ -26,7 +26,7 @@ class _WidgetzState extends State<Widgetz> {
               children: [
                 TextButton(
                   onPressed: () {
-                    // funtion.InputSoal(context);
+                     funtion.inputSoal(context);
                   },
                   child: Container(
                     width: double.infinity,

@@ -129,7 +129,7 @@ class fungis {
                           style: const TextStyle(fontSize: 12),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Kirim pertanyaan anda disini',
+                            hintText: 'Kirim Jawaban anda disini',
                             hintStyle: TextStyle(color: Colors.grey),
                           ),
                         ),
