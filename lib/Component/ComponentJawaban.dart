@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:static_mejakita/Fungsi/FungsiJawaban.dart';
+import 'package:static_mejakita/Fungsi%20Tampilan/FungsiJawaban.dart';
 
 class Louis extends StatefulWidget {
   final String questionText;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:static_mejakita/Component/ComponentJawaban.dart';
-import 'package:static_mejakita/Fungsi/FungsiPR.dart';
+import 'package:static_mejakita/Fungsi%20Tampilan/FungsiPR.dart';
 
 class Widgetz extends StatefulWidget {
   const Widgetz({super.key});
