@@ -15,24 +15,31 @@ class _JawabanState extends State<Jawaban> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-      backgroundColor: Colors.white,
-      leading: IconButton(
+        backgroundColor: Colors.white,
+        elevation: 0, 
+        leading: IconButton(
           icon: const Icon(Icons.chevron_left),
           onPressed: () {
-            Navigator.of(context).pushReplacementNamed('/homepage');
+            Navigator.of(context).pop(); 
           },
         ),
-        title: Text("Diskusi PR",
-        style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w800),),
+        title: Text(
+          "Diskusi PR",
+          style: GoogleFonts.nunito(
+            fontSize: 14,
+            fontWeight: FontWeight.w800,
+            color: Colors.black, 
+          ),
         ),
-        body: const Louis(
-  questionText: 'Your question text here',
-  userName: 'Your username here',
-  imageUrl: null,  
-  likes: null,     
-  comments: null,  
-),
-
+        centerTitle: true, 
+      ),
+      body: const Louis(
+        questionText: 'Your question text here',
+        userName: 'Your username here',
+        imageUrl: null,  
+        likes: null,     
+        comments: null,  
+      ),
     );
   }
 }

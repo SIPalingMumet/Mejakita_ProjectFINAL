@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:static_mejakita/Component/ComponentJawaban.dart';
 import 'package:static_mejakita/Fungsi/FungsiPR.dart';
-import 'package:static_mejakita/Pages/Jawaban.dart';
 
 class Widgetz extends StatefulWidget {
   const Widgetz({super.key});
@@ -124,7 +123,6 @@ class _WidgetzState extends State<Widgetz> {
                     ),
                   ),
                 );
-
               },
             ),
             const SizedBox(
@@ -135,14 +133,20 @@ class _WidgetzState extends State<Widgetz> {
                 questionText:
                     "Apakah aplikasi yang bergerak di bidang non profit pendidikan yang adala di malang jawa timur ",
                 likes: 2,
-                imageUrl:
-                'https://picsum.photos/200/300',
+                imageUrl: 'https://picsum.photos/200/300',
                 comments: 5,
                 onNavigate: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Jawaban(),
+                        builder: (context) => const Louis(
+                          questionText:
+                              "Apakah aplikasi yang bergerak di bidang non profit pendidikan yang adala di malang jawa timur ",
+                          userName: "Andrew Jacked",
+                          imageUrl: 'https://picsum.photos/200/300',
+                          likes: 2,
+                          comments: 5,
+                        ),
                       ));
                 }),
           ],
