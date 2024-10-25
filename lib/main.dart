@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:static_mejakita/Pages/Jawaban.dart';
 import 'package:static_mejakita/Pages/Login.dart';
 import 'package:static_mejakita/Pages/Otp.dart';
 import 'package:static_mejakita/Pages/Profile.dart';
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/homepage': (context) => const Diskusipr(),
         '/history': (context) => const Profile(),
-        '/jawaban': (context) => const Jawaban(),
         '/pertanyaan': (context) => const Pertanyaan1(),
         '/login': (context) => const Login(),
         '/Signup': (context) => const Sign(),

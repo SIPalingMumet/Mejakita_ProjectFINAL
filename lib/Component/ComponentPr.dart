@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:static_mejakita/Component/ComponentJawaban.dart';
 import 'package:static_mejakita/Fungsi%20Tampilan/FungsiPR.dart';
+import 'package:static_mejakita/Pages/Jawaban.dart';
 
 class Widgetz extends StatefulWidget {
   const Widgetz({super.key});
@@ -114,7 +114,7 @@ class _WidgetzState extends State<Widgetz> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Louis(
+                    builder: (context) => const Jawaban(
                       questionText: "Hormon adalah pembawa pesan kimiawi...",
                       userName: "Saya",
                       imageUrl: null,
@@ -139,7 +139,7 @@ class _WidgetzState extends State<Widgetz> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Louis(
+                        builder: (context) => const Jawaban(
                           questionText:
                               "Apakah aplikasi yang bergerak di bidang non profit pendidikan yang adala di malang jawa timur ",
                           userName: "Andrew Jacked",
