@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:static_mejakita/Pages/Login.dart';
 import 'package:static_mejakita/Pages/Otp.dart';
 import 'package:static_mejakita/Pages/Profile.dart';
@@ -8,7 +10,10 @@ import 'package:static_mejakita/Pages/diskusipr.dart';
 import 'package:static_mejakita/MaybeUnUssed/pertanyaan1.dart';
 import 'package:static_mejakita/Pages/forgot.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter(); 
+  await Hive.openBox('Boxis'); 
   runApp(const MyApp());
 }
 
