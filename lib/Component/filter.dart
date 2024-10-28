@@ -195,7 +195,7 @@ class filter {
                     Center(
                         child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF4d9d75),
+                        backgroundColor: const Color(0xFF4d9d75),
                         padding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 15),
                         shape: RoundedRectangleBorder(

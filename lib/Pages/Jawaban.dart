@@ -10,13 +10,13 @@ class Jawaban extends StatelessWidget {
   final int comments;
 
   const Jawaban({
-    Key? key,
+    super.key,
     required this.questionText,
     required this.userName,
     this.imageUrl,
     required this.likes,
     required this.comments,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

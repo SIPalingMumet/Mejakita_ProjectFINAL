@@ -151,5 +151,45 @@ class fungis {
     );
   }
 
-  
+  // For Pop up menu untuk hapus jawaban atau edit
+  void popupmenu(BuildContext context) {
+  showMenu(
+    context: context,
+    position: const RelativeRect.fromLTRB(100, 100, 0, 0),
+    items: <PopupMenuEntry<int>>[
+      PopupMenuItem(
+        value: 1,
+        child: GestureDetector(
+          onTap: () {
+            print("Edit tapped");
+          },
+          child: const Row(
+            children: [
+              Icon(Icons.edit),
+              SizedBox(width: 10),
+              Text("Edit"),
+            ],
+          ),
+        ),
+      ),
+      PopupMenuItem(
+        value: 2,
+        child: GestureDetector(
+          onTap: () {
+            print("Hapus tapped");
+          },
+          child: const Row(
+            children: [
+              Icon(Icons.delete),
+              SizedBox(width: 10),
+              Text("Hapus"),
+            ],
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+
 }
