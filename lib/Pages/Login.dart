@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:static_mejakita/Utils/Hive_Box.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,6 +11,29 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _obscureText = true;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _login() async {
+    final box = HiveBoxes.getSavedDataBox();
+    final storedEmail = box.get('email');
+    final storedPassword = box.get('password');
+    
+    if (_emailController.text == storedEmail && _passwordController.text == storedPassword) {
+      Navigator.of(context).pushReplacementNamed('/homepage');
+    } else {
+      _showError("Email atau password invalid!");
+    }
+  }
+
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message, style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +82,13 @@ class _LoginState extends State<Login> {
                   ),
                   child: Column(
                     children: [
-                      buildTextField(Icons.email_outlined, "E- Mail ", false),
+                      buildTextField(Icons.email_outlined, "E-Mail", _emailController, false),
                       const SizedBox(height: 18),
-                      buildTextField(Icons.lock_outline, "Password", true),
+                      buildTextField(Icons.lock_outline, "Password", _passwordController, true),
                       const SizedBox(height: 35),
                       GestureDetector(
                         onTap: () {
-                           Navigator.of(context)
-                              .pushReplacementNamed('/Forgot');
+                          Navigator.of(context).pushReplacementNamed('/Forgot');
                         },
                         child: const Text(
                           "Lupa Password",
@@ -78,10 +101,7 @@ class _LoginState extends State<Login> {
                       ),
                       const SizedBox(height: 160),
                       TextButton(
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacementNamed('/homepage');
-                        },
+                        onPressed: _login,
                         child: Container(
                           width: 100,
                           padding: const EdgeInsets.symmetric(vertical: 12),
@@ -104,37 +124,35 @@ class _LoginState extends State<Login> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 Center(
-                    child: Column(
-                  children: [
-                    Text(
-                      "Belum Punya Akun ?",
-                      style: GoogleFonts.nunito(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Belum Punya Akun ?",
+                        style: GoogleFonts.nunito(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
-                          color: Colors.black),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pushReplacementNamed('/Signup');
-                      },
-                      child: Text(
-                        "Daftar",
-                        style: GoogleFonts.nunito(
-                          color: const Color(0xFF4d9d75),
-                          fontWeight: FontWeight.w800,
-                          fontSize: 12,
+                          color: Colors.black,
                         ),
                       ),
-                    ),
-                  ],
-                ))
+                      const SizedBox(height: 5),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushReplacementNamed('/Signup');
+                        },
+                        child: Text(
+                          "Daftar",
+                          style: GoogleFonts.nunito(
+                            color: const Color(0xFF4d9d75),
+                            fontWeight: FontWeight.w800,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
@@ -143,7 +161,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget buildTextField(IconData icon, String hintText, bool isPassword) {
+  Widget buildTextField(IconData icon, String hintText, TextEditingController controller, bool isPassword) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       decoration: BoxDecoration(
@@ -163,6 +181,7 @@ class _LoginState extends State<Login> {
           const SizedBox(width: 15),
           Expanded(
             child: TextField(
+              controller: controller,
               obscureText: isPassword ? _obscureText : false,
               decoration: InputDecoration(
                 hintText: hintText,
